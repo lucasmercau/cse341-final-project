@@ -1,8 +1,9 @@
 const { Movie } = require("../models/movie");
-const { ObjectId } = require("mongodb").ObjectId;
+const ObjectId = require("mongodb").ObjectId;
 
 // This wil be our movies collection
 const getAll = async (req, res) => {
+  //#swagger.tags=["Movies"]
   try {
     const movies = await Movie.find();
     res.status(200).json(movies);
@@ -12,10 +13,12 @@ const getAll = async (req, res) => {
 };
 
 const getById = (req, res) => {
+  //#swagger.tags=["Movies"]
   res.send("Get single movie by id");
 };
 
 const createMovie = async (req, res) => {
+  //#swagger.tags=["Movies"]
   const movieSchema = {
     title: req.body.title,
     genre: req.body.genre,

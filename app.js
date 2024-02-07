@@ -9,7 +9,17 @@ const movieRouter = require("./routes/moviesRoute");
 app.set("view engine", "ejs");
 app.use(express.json());
 
-app.use("/", movieRouter);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); 
+  res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Z-Key"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS"); 
+  next();
+});
+
+app.use("/", require("./routes"));
 
 MongoConnect();
 app.listen(port, () => {
