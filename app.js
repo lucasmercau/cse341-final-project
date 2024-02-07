@@ -8,6 +8,7 @@ const movieRouter = require("./routes/moviesRoute");
 
 app.set("view engine", "ejs");
 app.use(express.json());
+
 app.use("/", movieRouter);
 
 MongoConnect();
