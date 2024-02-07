@@ -1,0 +1,22 @@
+GET http://localhost:3000
+
+
+###
+GET http://localhost:3000/id
+
+
+###
+POST http://localhost:3000
+Content-Type: application/json
+
+{
+  "title": "Harry Potter",
+  "genre": "Fantasy",
+  "releaseDate": "2000-12-13",
+  "viewerDiscretion": "PG 13",
+  "productionCompany": "Warner Bros",
+  "director": "Jk Rowlin",
+  "duration": "122m",
+  "language": "English",
+  "boxOffice": 879334678
+}
