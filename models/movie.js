@@ -9,7 +9,7 @@ const MovieSchema = mongoose.Schema({
   director: String,
   duration: String,
   language: String,
-  boxOffice: Number
+  boxOffice: Number,
 });
 
 const CastSchema = mongoose.Schema({
