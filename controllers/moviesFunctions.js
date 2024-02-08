@@ -1,4 +1,5 @@
 const { Movie } = require("../models/movie");
+const JoiMovie = require("../models/validate");
 const ObjectId = require("mongodb").ObjectId;
 
 // This wil be our movies collection
@@ -38,6 +39,13 @@ const createMovie = async (req, res) => {
     language: req.body.language,
     boxOffice: req.body.boxOffice,
   };
+
+  const { error } = JoiMovie.validate(movieSchema);
+  if (error) {
+    return res
+      .status(422)
+      .json({ error: error.details.map((detail) => detail.message) });
+  }
 
   const movie = new Movie(movieSchema);
   try {

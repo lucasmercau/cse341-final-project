@@ -8,7 +8,7 @@ GET http://localhost:3000/movies/65c3db81c06eea3195b6515d
 
 
 ### Creates a movie
-POST http://localhost:3000
+POST http://localhost:3000/movies
 Content-Type: application/json
 
 {
