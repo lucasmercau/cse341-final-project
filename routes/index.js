@@ -1,4 +1,5 @@
-const router = require("express").Router(); // The method .Routes() of express module will help us handle different routes.
+// The method .Router() of express module will help us handle different routes.
+const router = require("express").Router();
 
 router.use("/", require("./swagger"));
 router.use("/movies", require("./moviesRoute"));
