@@ -4,7 +4,7 @@ GET http://localhost:3000/movies
 
 
 ### Get's a movie by it's title
-GET http://localhost:3000/movies/pottt
+GET http://localhost:3000/movies/steven
 
 
 ### Creates a movie
