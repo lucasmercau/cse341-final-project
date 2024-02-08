@@ -4,7 +4,7 @@ GET http://localhost:3000/movies
 
 
 ### Get's a movie by it's id
-GET http://localhost:3000/movies/65c3db81c06eea3195b6515d
+GET http://localhost:3000/movies/title
 
 
 ### Creates a movie
@@ -12,13 +12,13 @@ POST http://localhost:3000/movies
 Content-Type: application/json
 
 {
-  "title": "Harry Potter",
-  "genre": "Fantasy",
-  "releaseDate": "2000-12-13",
+  "title": "Doctor Strange in the Multiverse of Madness",
+  "genre": "Superhero",
+  "releaseDate": "2022-05-02",
   "viewerDiscretion": "PG 13",
-  "productionCompany": "Warner Bros",
-  "director": "Jk Rowlin",
-  "duration": "122m",
+  "productionCompany": "Marvel Studios",
+  "director": "Sam Raimi",
+  "duration": "126m",
   "language": "English",
-  "boxOffice": 879334678
+  "boxOffice": 955800000
 }

@@ -13,16 +13,19 @@ const getAll = async (req, res) => {
   }
 };
 
-const getById = async (req, res) => {
+const getByTitle = async (req, res) => {
   //#swagger.tags=["Movies"]
-  if (!ObjectId.isValid(req.params.id)) {
-    res.status(422).json({ message: "Error: id must be valid" });
-  }
   try {
-    const movieById = await Movie.findById(req.params.id);
-    res.status(200).json(movieById);
+    const searchItem = req.params.title;
+    const regexp = new RegExp(searchItem, "i");
+    const movieByTitle = await Movie.find({ title: { $regex: regexp } });
+    if (!movieByTitle || movieByTitle.lenght === 0) {
+      res.status(404).json({ message: "Error: movie not found" });
+    }
+    res.status(200).json(movieByTitle);
   } catch (err) {
-    res.status(422).json({ message: err });
+    console.error(err);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -58,6 +61,6 @@ const createMovie = async (req, res) => {
 
 module.exports = {
   getAll,
-  getById,
+  getByTitle,
   createMovie,
 };
