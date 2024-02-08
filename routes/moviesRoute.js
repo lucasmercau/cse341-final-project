@@ -1,5 +1,5 @@
 const movieRouter = require("express").Router();
-const controller = require("../controllers/moviesFunctions");
+const controller = require("../controllers/moviesFunction");
 
 movieRouter.get("/", controller.getAll);
 movieRouter.get("/:title", controller.getByTitle);

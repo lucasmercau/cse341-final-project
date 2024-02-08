@@ -1,6 +1,5 @@
 const { Movie } = require("../models/movie");
-const JoiMovie = require("../models/validate");
-const ObjectId = require("mongodb").ObjectId;
+const { JoiMovie } = require("../models/validate");
 
 // This wil be our movies collection
 const getAll = async (req, res) => {
@@ -37,7 +36,7 @@ const createMovie = async (req, res) => {
     releaseDate: req.body.releaseDate,
     viewerDiscretion: req.body.viewerDiscretion,
     productionCompany: req.body.productionCompany,
-    director: req.body.director,
+    directors: req.body.directors,
     duration: req.body.duration,
     language: req.body.language,
     boxOffice: req.body.boxOffice,

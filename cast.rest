@@ -1,0 +1,21 @@
+### This rest file is for the cast
+### Get all cast crew members.
+GET http://localhost:3000/cast/
+
+
+### Get cast member by their name
+GET http://localhost:3000/cast/rad
+
+
+### Create cast member and save them to mongodb.
+POST http://localhost:3000/cast/
+Content-Type: application/json
+
+{
+    "fullname": "Daniel Radcliffe",
+    "dob": "1989-07-23",
+    "pob": "London",
+    "gender": "Male",
+    "nationality": "English",
+    "biography": "Daniel Jacob Radcliffe (born 23 July 1989) is an English actor. He rose to fame at age 12 when he began portraying Harry Potter in the film series of the same name. Radcliffe portrayed Potter in all eight films in the series, beginning with Harry Potter and the Philosopher's Stone (2001) and concluding with Harry Potter and the Deathly Hallows: Part 2 (2011). The series made him one of the world's highest-paid actors."
+}
