@@ -16,16 +16,16 @@ const getAll = async (req, res) => {
 const getByTitle = async (req, res) => {
   //#swagger.tags=["Movies"]
   try {
-    const searchItem = req.params.title;
-    const regexp = new RegExp(searchItem, "i");
-    const movieByTitle = await Movie.find({ title: { $regex: regexp } });
-    if (!movieByTitle || movieByTitle.lenght === 0) {
-      res.status(404).json({ message: "Error: movie not found" });
+    const searchTerm = req.params.title;
+    const regex = new RegExp(searchTerm, "i"); // "i" flag for case-insensitive search
+    const movieByTitle = await Movie.find({ title: { $regex: regex } });
+    if (!movieByTitle || movieByTitle.length === 0) {
+      return res.status(404).json({ message: "No matching movies found" });
     }
     res.status(200).json(movieByTitle);
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Internal server error" });
+    console.error(err); // Log the error for debugging purposes
+    res.status(500).json({ message: "Internal server error" }); // Handle the error appropriately
   }
 };
 
