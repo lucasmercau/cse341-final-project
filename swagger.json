@@ -1,17 +1,22 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Movies Website",
-    "description": "This is an api server for a movie website",
+    "title": "Movies Api",
+    "description": "Movies Api",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": ["http", "https"],
+  "schemes": [
+    "http",
+    "https"
+  ],
   "paths": {
     "/": {
       "get": {
-        "tags": ["Final Project"],
+        "tags": [
+          "Final Project"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -22,7 +27,9 @@
     },
     "/movies/": {
       "get": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -34,7 +41,9 @@
         }
       },
       "post": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
         "parameters": [
           {
@@ -58,7 +67,7 @@
                 "productionCompany": {
                   "example": "any"
                 },
-                "director": {
+                "directors": {
                   "example": "any"
                 },
                 "duration": {
@@ -84,13 +93,15 @@
         }
       }
     },
-    "/movies/{id}": {
+    "/movies/{title}": {
       "get": {
-        "tags": ["Movies"],
+        "tags": [
+          "Movies"
+        ],
         "description": "",
         "parameters": [
           {
-            "name": "id",
+            "name": "title",
             "in": "path",
             "required": true,
             "type": "string"
@@ -100,8 +111,97 @@
           "200": {
             "description": "OK"
           },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cast/": {
+      "get": {
+        "tags": [
+          "Cast"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
           "422": {
             "description": "Unprocessable Entity"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cast"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "fullname": {
+                  "example": "any"
+                },
+                "dob": {
+                  "example": "any"
+                },
+                "pob": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "nationality": {
+                  "example": "any"
+                },
+                "biography": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/cast/{fullname}": {
+      "get": {
+        "tags": [
+          "Cast"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "fullname",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }

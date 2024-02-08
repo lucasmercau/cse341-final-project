@@ -2,6 +2,7 @@ const { Cast } = require("../models/movie");
 const { JoiCast } = require("../models/validate");
 
 const getall = async (req, res) => {
+  //#swagger.tags=["Cast"]
   try {
     const castCrew = await Cast.find();
     res.status(200).json(castCrew);
@@ -11,6 +12,7 @@ const getall = async (req, res) => {
 };
 
 const getByName = async (req, res) => {
+  //#swagger.tags=["Cast"]
   try {
     const searchTerm = req.params.fullname;
     const regex = new RegExp(searchTerm, "i");
@@ -26,6 +28,7 @@ const getByName = async (req, res) => {
 };
 
 const createCastMember = async (req, res) => {
+  //#swagger.tags=["Cast"]
   const castSchema = {
     fullname: req.body.fullname,
     dob: req.body.dob,
