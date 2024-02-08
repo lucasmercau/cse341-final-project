@@ -2,21 +2,16 @@
   "swagger": "2.0",
   "info": {
     "title": "Movies Api",
-    "description": "Movies Api",
+    "description": "This is an api server for a movie website",
     "version": "1.0.0"
   },
   "host": "localhost:3000",
   "basePath": "/",
-  "schemes": [
-    "http",
-    "https"
-  ],
+  "schemes": ["http", "https"],
   "paths": {
     "/": {
       "get": {
-        "tags": [
-          "Final Project"
-        ],
+        "tags": ["Final Project"],
         "description": "",
         "responses": {
           "200": {
@@ -27,9 +22,7 @@
     },
     "/movies/": {
       "get": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "responses": {
           "200": {
@@ -41,9 +34,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -95,9 +86,7 @@
     },
     "/movies/{id}": {
       "get": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
