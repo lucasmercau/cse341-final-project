@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Movies Api",
+    "title": "Movies Website",
     "description": "This is an api server for a movie website",
     "version": "1.0.0"
   },
