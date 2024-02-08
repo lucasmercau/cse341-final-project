@@ -110,6 +110,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           }
         }
       }

@@ -1,11 +1,13 @@
-GET http://localhost:3000
+
+### Get's all the movies.
+GET http://localhost:3000/movies
 
 
-###
-GET http://localhost:3000/id
+### Get's a movie by it's id
+GET http://localhost:3000/movies/65c3db81c06eea3195b6515d
 
 
-###
+### Creates a movie
 POST http://localhost:3000
 Content-Type: application/json
 

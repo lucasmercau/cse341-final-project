@@ -12,9 +12,17 @@ const getAll = async (req, res) => {
   }
 };
 
-const getById = (req, res) => {
+const getById = async (req, res) => {
   //#swagger.tags=["Movies"]
-  res.send("Get single movie by id");
+  if (!ObjectId.isValid(req.params.id)) {
+    res.status(422).json({ message: "Error: id must be valid" });
+  }
+  try {
+    const movieById = await Movie.findById(req.params.id);
+    res.status(200).json(movieById);
+  } catch (err) {
+    res.status(422).json({ message: err });
+  }
 };
 
 const createMovie = async (req, res) => {
