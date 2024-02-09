@@ -5,10 +5,9 @@
     "description": "Movies Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "final-project-qesp.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
     "https"
   ],
   "paths": {
