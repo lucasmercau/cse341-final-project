@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const { Movie } = require("../models/movie");
 const { JoiMovie } = require("../models/validate");
 
@@ -58,8 +59,68 @@ const createMovie = async (req, res) => {
   }
 };
 
+const updateMovie = async (req, res) => {
+  //#swagger.tags=["Movies"]
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(422).json({ message: "Error: id must be valid" });
+  }
+  const movieId = new ObjectId(req.params.id);
+  const updatedMovie = {
+    title: req.body.title,
+    genre: req.body.genre,
+    releaseDate: req.body.releaseDate,
+    viewerDiscretion: req.body.viewerDiscretion,
+    productionCompany: req.body.productionCompany,
+    directors: req.body.directors,
+    duration: req.body.duration,
+    language: req.body.language,
+    boxOffice: req.body.boxOffice,
+  };
+
+  const { error } = JoiMovie.validate(updatedMovie);
+  if (error) {
+    return res
+      .status(422)
+      .json({ error: error.details.map((detail) => detail.message) });
+  }
+
+  try {
+    const response = await Movie.updateOne(
+      { _id: movieId },
+      { $set: updatedMovie }
+    );
+    if (response.modifiedCount > 0) {
+      return res.status(204).json({ message: "Movie updated successfully" });
+    } else {
+      res.status(404).json({ message: "Movie not found" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Internal server error", err });
+  }
+};
+
+const deleteMovie = async (req, res) => {
+  //#swagger.tags=["Movies"]
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(422).json({ message: "Error: id must be valid" });
+  }
+
+  try {
+    const deletedMovie = await Movie.deleteOne({ _id: req.params.id });
+    if (deletedMovie.deletedCount > 0) {
+      return res.status(204).json({ message: "Movie deleted successfully" });
+    } else {
+      return res.status(404).json({ message: "Movie not found" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Internal server error", err });
+  }
+};
+
 module.exports = {
   getAll,
   getByTitle,
   createMovie,
+  updateMovie,
+  deleteMovie,
 };

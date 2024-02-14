@@ -3,10 +3,10 @@ const swaggerAutogen = require("swagger-autogen")();
 const doc = {
     info: {
         title: "Movies Api",
-        description: "Movies Api"
+        description: "API for managing movie-related data"
     },
-    host: "localhost:3000",
-    schemes: ["http", "https"]
+    host: "final-project-qesp.onrender.com",
+    schemes: ["https"]
 };
 
 const outputFile = "./swagger.json";

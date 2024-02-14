@@ -1,13 +1,18 @@
-// The method .Router() of express module will help us handle different routes.
 const router = require("express").Router();
 
 router.use("/", require("./swagger"));
-router.use("/movies", require("./moviesRoute"));
-router.use("/cast", require("./castsRoute"));
 
+router.use("/movies/", require("./moviesRoute"));
+
+router.use("/cast/", require("./castsRoute"));
+
+// This is our oauth authentication route...
+router.use("/auth/google", require("../controllers/google-auth"));
+// router.use("/auth/github", require("../controllers/github-auth"));
+
+// This is the root path handler
 router.get("/", (req, res) => {
-  //#swagger.tags=["Final Project"]
-  res.send("Final Project");
+  res.render("auth");
 });
 
 module.exports = router;

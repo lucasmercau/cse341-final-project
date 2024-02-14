@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Movies Api",
-    "description": "Movies Api",
+    "description": "API for managing movie-related data",
     "version": "1.0.0"
   },
   "host": "final-project-qesp.onrender.com",
@@ -13,17 +13,15 @@
   "paths": {
     "/": {
       "get": {
-        "tags": [
-          "Final Project"
-        ],
         "description": "",
         "responses": {
-          "200": {
-            "description": "OK"
+          "default": {
+            "description": ""
           }
         }
       }
     },
+  
     "/movies/": {
       "get": {
         "tags": [
@@ -112,6 +110,100 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/movies/{id}": {
+      "put": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "any"
+                },
+                "genre": {
+                  "example": "any"
+                },
+                "releaseDate": {
+                  "example": "any"
+                },
+                "viewerDiscretion": {
+                  "example": "any"
+                },
+                "productionCompany": {
+                  "example": "any"
+                },
+                "directors": {
+                  "example": "any"
+                },
+                "duration": {
+                  "example": "any"
+                },
+                "language": {
+                  "example": "any"
+                },
+                "boxOffice": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Movies"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
           },
           "500": {
             "description": "Internal Server Error"
