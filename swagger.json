@@ -21,7 +21,6 @@
         }
       }
     },
-  
     "/movies/": {
       "get": {
         "tags": [
@@ -214,7 +213,7 @@
     "/cast/": {
       "get": {
         "tags": [
-          "Cast"
+          "Harry Potter and the Deathly Hallows: Part 2 Cast"
         ],
         "description": "",
         "responses": {
@@ -228,7 +227,7 @@
       },
       "post": {
         "tags": [
-          "Cast"
+          "Harry Potter and the Deathly Hallows: Part 2 Cast"
         ],
         "description": "",
         "parameters": [
@@ -273,7 +272,7 @@
     "/cast/{fullname}": {
       "get": {
         "tags": [
-          "Cast"
+          "Harry Potter and the Deathly Hallows: Part 2 Cast"
         ],
         "description": "",
         "parameters": [
@@ -300,7 +299,7 @@
     "/cast/{id}": {
       "put": {
         "tags": [
-          "Cast"
+          "Harry Potter and the Deathly Hallows: Part 2 Cast"
         ],
         "description": "",
         "parameters": [
@@ -355,7 +354,7 @@
       },
       "delete": {
         "tags": [
-          "Cast"
+          "Harry Potter and the Deathly Hallows: Part 2 Cast"
         ],
         "description": "",
         "parameters": [
