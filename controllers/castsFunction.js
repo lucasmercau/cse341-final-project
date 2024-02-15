@@ -1,5 +1,6 @@
 const { Cast } = require("../models/movie");
 const { JoiCast } = require("../models/validate");
+const { ObjectId } = require("mongodb");
 
 const getall = async (req, res) => {
   //#swagger.tags=["Cast"]
@@ -53,8 +54,69 @@ const createCastMember = async (req, res) => {
   }
 };
 
+const updateCastmember = async (req, res) => {
+  //#swagger.tags=["Cast"]
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(422).json({ message: "Error: id must be valid" });
+  }
+  const castMemberId = new ObjectId(req.params.id);
+  const updatedCatMember = {
+    fullname: req.body.fullname,
+    dob: req.body.dob,
+    pob: req.body.pob,
+    gender: req.body.gender,
+    nationality: req.body.nationality,
+    biography: req.body.biography,
+  };
+
+  const { error } = JoiCast.validate(updatedCatMember);
+  if (error) {
+    return res
+      .status(422)
+      .json({ error: error.details.map((detail) => detail.message) });
+  }
+
+  try {
+    const response = await Cast.updateOne(
+      { _id: castMemberId },
+      { $set: updatedCatMember }
+    );
+    if (response.modifiedCount > 0) {
+      return res
+        .status(204)
+        .json({ message: "Cast member updated successfully" });
+    } else {
+      res.status(404).json({ message: "Cast member not found" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Internal server error", err });
+  }
+};
+
+const deleteCastMember = async (req, res) => {
+  //#swagger.tags=["Cast"]
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(422).json({ message: "Error: id must be valid" });
+  }
+
+  try {
+    const deletedCastMember = await Cast.deleteOne({ _id: req.params.id });
+    if (deletedCastMember.deletedCount > 0) {
+      return res
+        .status(204)
+        .json({ message: "Cast member deleted successfully" });
+    } else {
+      return res.status(404).json({ message: "Cast member not found" });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Internal server error", err });
+  }
+};
+
 module.exports = {
   getall,
   getByName,
   createCastMember,
+  updateCastmember,
+  deleteCastMember,
 };
