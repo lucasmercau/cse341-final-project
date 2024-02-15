@@ -39,6 +39,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+passport.serializeUser(function (user, cb) {
+  cb(null, user);
+});
+passport.deserializeUser(function (obj, cb) {
+  cb(null, obj);
+});
+
 app.use("/", require("./routes"));
 
 MongoConnect();

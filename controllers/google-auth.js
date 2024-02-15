@@ -4,13 +4,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { GoogleUser } = require("../models/users");
 const googleRouter = require("express").Router();
 
-passport.serializeUser(function (user, cb) {
-  cb(null, user);
-});
-passport.deserializeUser(function (obj, cb) {
-  cb(null, obj);
-});
-
 passport.use(
   //#swagger.tags=["OAuth"]
   new GoogleStrategy(

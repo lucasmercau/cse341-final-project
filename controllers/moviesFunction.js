@@ -55,7 +55,8 @@ const createMovie = async (req, res) => {
     const savedMovie = await movie.save();
     res.status(201).json(savedMovie);
   } catch (err) {
-    return res.status(422).json({ message: err });
+    console.error(err);
+    res.status(500).json({ message: "Internal server error!" });
   }
 };
 
@@ -90,12 +91,13 @@ const updateMovie = async (req, res) => {
       { $set: updatedMovie }
     );
     if (response.modifiedCount > 0) {
-      return res.status(204).json({ message: "Movie updated successfully" });
+      res.status(204).json({ message: "Movie updated successfully" });
     } else {
       res.status(404).json({ message: "Movie not found" });
     }
   } catch (err) {
-    return res.status(500).json({ message: "Internal server error", err });
+    console.error(err); // Log the error
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -108,12 +110,13 @@ const deleteMovie = async (req, res) => {
   try {
     const deletedMovie = await Movie.deleteOne({ _id: req.params.id });
     if (deletedMovie.deletedCount > 0) {
-      return res.status(204).json({ message: "Movie deleted successfully" });
+      res.status(204).json({ message: "Movie deleted successfully" });
     } else {
-      return res.status(404).json({ message: "Movie not found" });
+      res.status(404).json({ message: "Movie not found" });
     }
   } catch (err) {
-    return res.status(500).json({ message: "Internal server error", err });
+    console.error(err); // Log the error
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
