@@ -7,9 +7,7 @@
   },
   "host": "final-project-qesp.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/": {
       "get": {
@@ -21,21 +19,9 @@
         }
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/movies/": {
       "get": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "responses": {
           "200": {
@@ -47,9 +33,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -107,9 +91,7 @@
     },
     "/movies/{title}": {
       "get": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -134,9 +116,7 @@
     },
     "/movies/{id}": {
       "put": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -201,9 +181,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Movies"
-        ],
+        "tags": ["Movies"],
         "description": "",
         "parameters": [
           {
@@ -234,9 +212,7 @@
     },
     "/cast/": {
       "get": {
-        "tags": [
-          "Cast"
-        ],
+        "tags": ["Cast"],
         "description": "",
         "responses": {
           "200": {
@@ -248,9 +224,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Cast"
-        ],
+        "tags": ["Cast"],
         "description": "",
         "parameters": [
           {
@@ -296,9 +270,7 @@
     },
     "/cast/{fullname}": {
       "get": {
-        "tags": [
-          "Cast"
-        ],
+        "tags": ["Cast"],
         "description": "",
         "parameters": [
           {
@@ -323,9 +295,7 @@
     },
     "/cast/{id}": {
       "put": {
-        "tags": [
-          "Cast"
-        ],
+        "tags": ["Cast"],
         "description": "",
         "parameters": [
           {
@@ -381,9 +351,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Cast"
-        ],
+        "tags": ["Cast"],
         "description": "",
         "parameters": [
           {
@@ -408,156 +376,6 @@
           },
           "500": {
             "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/auth/google/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/google/callback": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/google/success": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/google/error": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auth/google/signout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/auth/github/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/github/callback": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/github/success": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/github/error": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auth/github/signout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "400": {
-            "description": "Bad Request"
-          }
-        }
-      }
-    },
-    "/auth/facebook/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/facebook/callback": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/facebook/success": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/auth/facebook/error": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/auth/facebook/signout": {
-      "get": {
-        "description": "",
-        "responses": {
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
