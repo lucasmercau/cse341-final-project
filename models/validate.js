@@ -21,6 +21,12 @@ const JoiCast = Joi.object({
   biography: Joi.string(),
 }).options({ allowUnknown: true, stripUnknown: true });
 
+const JoiRating = Joi.object({
+  username: Joi.string().required(),
+  rating: Joi.number().required(),
+  comment: Joi.string()
+}).options({ allowUnknown: true, stripUnknown: true });
+
 const JoiGoogleUser = Joi.object({
   username: Joi.string().required(),
   thumbnail: Joi.string().required(),
@@ -39,6 +45,7 @@ const JoiFacebookUser = Joi.object({
 module.exports = {
   JoiMovie,
   JoiCast,
+  JoiRating,
   JoiGoogleUser,
   JoiGithubUser,
   JoiFacebookUser,

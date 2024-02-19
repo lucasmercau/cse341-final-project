@@ -13,6 +13,7 @@ router.get("/", (req, res) => {
 router.use("/", require("./swagger"));
 router.use("/movies/", require("./moviesRoute"));
 router.use("/cast/", require("./castsRoute"));
+router.use("/ratings/", require("./ratingsRoute"));
 
 router.use("/go-users/", require("./googleRoute"));
 router.use("/gi-users/", require("./githubRoute"));

@@ -9,7 +9,8 @@ const getAll = async (req, res) => {
     const movies = await Movie.find();
     res.status(200).json(movies);
   } catch (err) {
-    res.status(422).json({ message: err });
+    console.error("Error in movies ", err);
+    res.status(422).json({ message: "Unprocessable content" });
   }
 };
 

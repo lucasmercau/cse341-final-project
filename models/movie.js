@@ -22,8 +22,9 @@ const CastSchema = mongoose.Schema({
 });
 
 const UserRatingSchema = mongoose.Schema({
+  username: String,
   rating: String,
-  comments: String,
+  comment: String,
   timestamp: {
     type: Date,
     default: Date.now,
@@ -34,6 +35,6 @@ const User = mongoose.Schema({});
 
 const Movie = mongoose.model("movie", MovieSchema);
 const Cast = mongoose.model("harry_potter_cast", CastSchema);
-const Ratings = mongoose.model("ratings", UserRatingSchema);
+const Rating = mongoose.model("ratings", UserRatingSchema);
 
-module.exports = { Movie, Cast, Ratings };
+module.exports = { Movie, Cast, Rating };

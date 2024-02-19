@@ -1,0 +1,33 @@
+### Get all the ratings from the db.
+GET http://localhost:3000/ratings
+
+
+
+### Get rating by id
+GET http://localhost:3000/ratings/:id
+
+
+### Create rating and store it in the db.
+POST http://localhost:3000/ratings/
+Content-Type: application/json
+
+{
+    "username": "dublamagazine",
+    "rating": 3,
+    "comment": "Awesome movie..."
+}
+
+
+### Update a rating using it's id.
+PUT http://localhost:3000/ratings/:id
+Content-Type: application/json
+
+{
+    "username": "",
+    "rating": 5,
+    "comment": ""
+}
+
+
+### Delete rating using it's id.
+DELETE http://localhost:3000/ratings/:id
