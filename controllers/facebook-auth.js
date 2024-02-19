@@ -9,7 +9,8 @@ passport.use(
     {
       clientID: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
-      callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+      callbackURL: "http://localhost:3000/auth/facebook/callback",
+      // process.env.FACEBOOK_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);
@@ -22,7 +23,7 @@ passport.use(
             new FacebookUser({
               username: profile.displayName,
               facebookId: profile.id,
-              thumbnail: profile.photos[0].value,
+              thumbnail: profile.profileUrl,
             })
               .save()
               .then((newFaceBookUser) => {
@@ -45,7 +46,7 @@ passport.use(
 
 facebookRouter.get(
   "/",
-  passport.authenticate("facebook", { scope: ["email", "user_phone_number"] })
+  passport.authenticate("facebook", { scope: ["email"] })
 );
 
 facebookRouter.get(
@@ -53,29 +54,27 @@ facebookRouter.get(
   passport.authenticate("facebook", {
     failureRedirect: "/auth/facebook/error",
   }),
-  function (req, res) {
-    // Successful authentication, redirect to success screen.
+  (req, res) => {
     res.redirect("/auth/facebook/success");
   }
 );
 
-facebookRouter.get("/success", async (req, res) => {
-  const userInfo = {
-    id: req.session.passport.user.id,
-    displayName: req.session.passport.user.displayName,
-    provider: req.session.passport.user.provider,
-  };
-  res.render("fb-github-success", { user: userInfo });
+facebookRouter.get("/success", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render("facebook-success", { profile: req.user });
+  } else {
+    res.redirect("/auth/facebook/error");
+  }
 });
 
 facebookRouter.get("/error", (req, res) =>
-  res.send("Error logging in via Facebook..")
+  res.send("Error logging in using Facebook..")
 );
 
 facebookRouter.get("/signout", (req, res) => {
   try {
     req.session.destroy(function (err) {
-      console.log("session destroyed.");
+      console.log("Session destroyed.");
     });
     res.render("auth");
   } catch (err) {

@@ -16,6 +16,16 @@
       body {
         padding-top: 100px;
       }
+
+      img {
+        border-radius: 50%;
+        width: 15%;
+      }
+
+      p {
+        padding: 1rem 0;
+        font-size: 18px;
+      }
     </style>
   </head>
   <body>
@@ -27,10 +37,11 @@
         <div class="row">
           <div class="col-sm-6">
             <div class="well">
+              <img src="<%= profile.profileUrl %>" alt="Profile Photo" />
               <p>
-                <strong>Id</strong>: <br />
-                <strong>Name</strong>: <br />
-                <strong>Provider</strong>: 
+                <strong>Id</strong>: <%= profile.id %> <br />
+                <strong>Name</strong>: <%= profile.displayName %> <br />
+                <strong>Provider</strong>: <%= profile.provider %>
               </p>
             </div>
             <div>

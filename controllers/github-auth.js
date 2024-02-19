@@ -11,7 +11,7 @@ passport.use(
       callbackURL: process.env.GITHUB_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+      console.log("User profile: ", profile);
       GithubUser.findOne({ githubId: profile.id })
         .then((currentGithubtUser) => {
           if (currentGithubtUser) {
@@ -56,12 +56,11 @@ githubRouter.get(
 );
 
 githubRouter.get("/success", (req, res) => {
-  const userInfo = {
-    id: req.session.passport.user.id,
-    displayName: req.session.passport.user.username,
-    provider: req.session.passport.user.provider,
-  };
-  res.render("fb-github-success", { user: userInfo });
+  if (req.isAuthenticated()) {
+    res.render("github-success", { profile: req.user });
+  } else {
+    res.redirect("/auth/github/error")
+  }
 });
 
 githubRouter.get("/error", (req, res) => {
