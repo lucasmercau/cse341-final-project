@@ -21,7 +21,25 @@ const JoiCast = Joi.object({
   biography: Joi.string(),
 }).options({ allowUnknown: true, stripUnknown: true });
 
+const JoiGoogleUser = Joi.object({
+  username: Joi.string().required(),
+  thumbnail: Joi.string().required(),
+}).options({ allowUnknown: true, stripUnknown: true });
+
+const JoiGithubUser = Joi.object({
+  username: Joi.string().required(),
+  thumbnail: Joi.string().required(),
+}).options({ allowUnknown: true, stripUnknown: true });
+
+const JoiFacebookUser = Joi.object({
+  username: Joi.string().required(),
+  thumbnail: Joi.string().required(),
+}).options({ allowUnknown: true, stripUnknown: true });
+
 module.exports = {
   JoiMovie,
   JoiCast,
+  JoiGoogleUser,
+  JoiGithubUser,
+  JoiFacebookUser,
 };

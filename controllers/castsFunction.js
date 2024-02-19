@@ -8,7 +8,8 @@ const getall = async (req, res) => {
     const castCrew = await Cast.find();
     res.status(200).json(castCrew);
   } catch (err) {
-    res.status(422).json({ message: err });
+    console.error(err);
+    res.status(422).json({ message: "Unprocessable content" });
   }
 };
 
@@ -60,7 +61,7 @@ const updateCastmember = async (req, res) => {
     return res.status(422).json({ message: "Error: id must be valid" });
   }
   const castMemberId = new ObjectId(req.params.id);
-  const updatedCatMember = {
+  const updatedCastMember = {
     fullname: req.body.fullname,
     dob: req.body.dob,
     pob: req.body.pob,
@@ -69,7 +70,7 @@ const updateCastmember = async (req, res) => {
     biography: req.body.biography,
   };
 
-  const { error } = JoiCast.validate(updatedCatMember);
+  const { error } = JoiCast.validate(updatedCastMember);
   if (error) {
     return res
       .status(422)
@@ -79,7 +80,7 @@ const updateCastmember = async (req, res) => {
   try {
     const response = await Cast.updateOne(
       { _id: castMemberId },
-      { $set: updatedCatMember }
+      { $set: updatedCastMember }
     );
     if (response.modifiedCount > 0) {
       return res
@@ -89,7 +90,8 @@ const updateCastmember = async (req, res) => {
       res.status(404).json({ message: "Cast member not found" });
     }
   } catch (err) {
-    return res.status(500).json({ message: "Internal server error", err });
+    console.error(err);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
 
