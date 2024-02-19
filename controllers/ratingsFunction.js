@@ -3,6 +3,7 @@ const { JoiRating } = require("../models/validate");
 const { ObjectId } = require("mongodb");
 
 const getAllRatings = async (req, res) => {
+  //#swagger.tags=["Movie Ratings"]
   try {
     const ratings = await Rating.find();
     res.status(200).json(ratings);
@@ -13,6 +14,7 @@ const getAllRatings = async (req, res) => {
 };
 
 const getRatingById = async (req, res) => {
+  //#swagger.tags=["Movie Ratings"]
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(422).json({ message: "Error: id must be valid" });
   }
@@ -29,6 +31,7 @@ const getRatingById = async (req, res) => {
 };
 
 const createRating = async (req, res) => {
+  //#swagger.tags=["Movie Ratings"]
   const newRating = {
     username: req.body.username,
     rating: req.body.rating,
@@ -53,6 +56,7 @@ const createRating = async (req, res) => {
 };
 
 const updateRating = async (req, res) => {
+  //#swagger.tags=["Movie Ratings"]
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(422).json({ message: "Error: id must be valid" });
   }
@@ -87,6 +91,7 @@ const updateRating = async (req, res) => {
 };
 
 const deleteRating = async (req, res) => {
+  //#swagger.tags=["Movie Ratings"]
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(422).json({ message: "Error: id must be valid" });
   }
