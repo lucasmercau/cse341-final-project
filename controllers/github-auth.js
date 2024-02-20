@@ -63,7 +63,7 @@ githubRouter.get(
   }),
   (req, res) => {
     req.session.user = req.user;
-    res.redirect("/auth/github/github-success");
+    res.redirect("/auth/github/success");
   }
 );
 

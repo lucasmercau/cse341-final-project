@@ -64,7 +64,7 @@ facebookRouter.get(
   }),
   (req, res) => {
     req.session.user = req.user;
-    res.redirect("/auth/facebook/facebook-success");
+    res.redirect("/auth/facebook/success");
   }
 );
 
