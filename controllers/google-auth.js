@@ -49,6 +49,14 @@ googleRouter.get(
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
+googleRouter.get("/success", (req, res) => {
+  if (req.session.user !== undefined) {
+    res.render("success", { profile: req.session.user });
+  } else {
+    res.redirect("/");
+  }
+});
+
 googleRouter.get(
   "/callback",
   passport.authenticate("google", {
@@ -61,13 +69,13 @@ googleRouter.get(
   }
 );
 
-googleRouter.get("/success", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render("success", { profile: req.user });
-  } else {
-    res.redirect("/auth/google/error");
-  }
-});
+// googleRouter.get("/success", (req, res) => {
+//   if (req.session.user !== undefined) {
+//     res.render("success", { profile: req.user });
+//   } else {
+//     res.redirect("/auth");
+//   }
+// });
 
 googleRouter.get("/error", (req, res) => {
   res.send("Error logging you in...");
