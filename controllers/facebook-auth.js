@@ -50,7 +50,7 @@ facebookRouter.get(
 
 facebookRouter.get("/facebook-success", (req, res) => {
   if (req.session.user !== undefined) {
-    res.render("facebook-success", { user: req.session.user });
+    res.render("facebook-success", { profile: req.session.user });
   } else {
     res.redirect("/");
   }
@@ -64,7 +64,7 @@ facebookRouter.get(
   }),
   (req, res) => {
     req.session.user = req.user;
-    res.redirect("/auth/facebook/success");
+    res.redirect("/auth/facebook/facebook-success");
   }
 );
 

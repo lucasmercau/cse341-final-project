@@ -49,7 +49,7 @@ githubRouter.get(
 
 githubRouter.get("/github-success", (req, res) => {
   if (req.session.user !== undefined) {
-    res.render("github-success", { user: req.session.user });
+    res.render("github-success", { profile: req.session.user });
   } else {
     res.redirect("/");
   }
@@ -63,7 +63,7 @@ githubRouter.get(
   }),
   (req, res) => {
     req.session.user = req.user;
-    res.redirect("/auth/github/success");
+    res.redirect("/auth/github/github-success");
   }
 );
 
