@@ -48,23 +48,33 @@ facebookRouter.get(
   passport.authenticate("facebook", { scope: ["email"] })
 );
 
+facebookRouter.get("/facebook-success", (req, res) => {
+  if (req.session.user !== undefined) {
+    res.render("facebook-success", { user: req.session.user });
+  } else {
+    res.redirect("/");
+  }
+});
+
 facebookRouter.get(
   "/callback",
   passport.authenticate("facebook", {
-    failureRedirect: "/auth/facebook/error",
+    failureRedirect: "/api-docs",
+    session: false,
   }),
   (req, res) => {
+    req.session.user = req.user;
     res.redirect("/auth/facebook/success");
   }
 );
 
-facebookRouter.get("/success", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render("facebook-success", { profile: req.user });
-  } else {
-    res.redirect("/auth/facebook/error");
-  }
-});
+// facebookRouter.get("/success", (req, res) => {
+//   if (req.isAuthenticated()) {
+//     res.render("facebook-success", { profile: req.user });
+//   } else {
+//     res.redirect("/auth/facebook/error");
+//   }
+// });
 
 facebookRouter.get("/error", (req, res) =>
   res.send("Error logging in using Facebook..")

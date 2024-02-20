@@ -69,14 +69,6 @@ googleRouter.get(
   }
 );
 
-// googleRouter.get("/success", (req, res) => {
-//   if (req.session.user !== undefined) {
-//     res.render("success", { profile: req.user });
-//   } else {
-//     res.redirect("/auth");
-//   }
-// });
-
 googleRouter.get("/error", (req, res) => {
   res.send("Error logging you in...");
 });

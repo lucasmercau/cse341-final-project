@@ -47,21 +47,33 @@ githubRouter.get(
   passport.authenticate("github", { scope: ["user:email"] })
 );
 
+githubRouter.get("/github-success", (req, res) => {
+  if (req.session.user !== undefined) {
+    res.render("github-success", { user: req.session.user });
+  } else {
+    res.redirect("/");
+  }
+});
+
 githubRouter.get(
   "/callback",
-  passport.authenticate("github", { failureRedirect: "/auth/github/error" }),
+  passport.authenticate("github", {
+    failureRedirect: "/api-docs",
+    session: false,
+  }),
   (req, res) => {
+    req.session.user = req.user;
     res.redirect("/auth/github/success");
   }
 );
 
-githubRouter.get("/success", (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render("github-success", { profile: req.user });
-  } else {
-    res.redirect("/auth/github/error")
-  }
-});
+// githubRouter.get("/success", (req, res) => {
+//   if (req.isAuthenticated()) {
+//     res.render("github-success", { profile: req.user });
+//   } else {
+//     res.redirect("/auth/github/error");
+//   }
+// });
 
 githubRouter.get("/error", (req, res) => {
   res.send("Error logging you in with GitHub...");
