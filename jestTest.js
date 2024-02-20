@@ -1,5 +1,5 @@
-const errorFunc = () => {
-  return 404;
+const getAllRatings = () => {
+  return "status 200";
 };
 
-module.exports = errorFunc;
+module.exports = getAllRatings;

@@ -51,8 +51,12 @@ googleRouter.get(
 
 googleRouter.get(
   "/callback",
-  passport.authenticate("google", { failureRedirect: "/auth/google/error" }),
+  passport.authenticate("google", {
+    failureRedirect: "/api-docs",
+    session: false,
+  }),
   (req, res) => {
+    req.session.user = req.user;
     res.redirect("/auth/google/success");
   }
 );

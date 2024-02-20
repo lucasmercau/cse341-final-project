@@ -1,5 +1,6 @@
 const sum = require("./jestTest");
 
-test("It should return an error message", () => {
-  expect(sum()).toBe(404);
+test("It should return a status code of 200", () => {
+  expect(sum()).toBe("status 200");
 });
+
