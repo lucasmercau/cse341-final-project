@@ -10,7 +10,6 @@ passport.use(
       clientID: process.env.FACEBOOK_ID,
       clientSecret: process.env.FACEBOOK_SECRET,
       callbackURL: process.env.FACEBOOK_CALLBACK_URL,
-      // process.env.FACEBOOK_CALLBACK_URL,
     },
     (accessToken, refreshToken, profile, done) => {
       console.log(profile);
